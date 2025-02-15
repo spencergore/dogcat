@@ -4,8 +4,21 @@ import numpy as np
 import cv2
 from PIL import Image
 
+MODEL_URL = "https://drive.google.com/file/d/1HLhTsifwbG_AK7D29WDObXoYpFeTkL9D/view?usp=drive_link"
+
+# Download model
+@st.cache(allow_output_mutation=True)
+def load_model():
+    response = requests.get(MODEL_URL, stream=True)
+    with open("cat_dog_classifier.h5", "wb") as f:
+        for chunk in response.iter_content(chunk_size=1024):
+            if chunk:
+                f.write(chunk)
+    return tf.keras.models.load_model("cat_dog_classifier.h5")
+
+# Load the model
+model = load_model()
 # Load the trained model
-model = tf.keras.models.load_model("cat_dog_classifier.h5")
 
 # Define image size (same as CNN input size)
 IMG_SIZE = (150, 150)
