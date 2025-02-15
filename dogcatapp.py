@@ -3,6 +3,14 @@ import tensorflow as tf
 import numpy as np
 import cv2
 from PIL import Image
+import os
+import subprocess
+
+try:
+    import requests
+except ImportError:
+    subprocess.call(["pip", "install", "requests"])
+    import requests
 
 MODEL_URL = "https://drive.google.com/file/d/1HLhTsifwbG_AK7D29WDObXoYpFeTkL9D/view?usp=drive_link"
 
