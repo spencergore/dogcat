@@ -15,7 +15,7 @@ except ImportError:
 MODEL_URL = "https://drive.google.com/file/d/1HLhTsifwbG_AK7D29WDObXoYpFeTkL9D/view?usp=drive_link"
 
 # Download model
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def load_model():
     response = requests.get(MODEL_URL, stream=True)
     with open("cat_dog_classifier.h5", "wb") as f:
