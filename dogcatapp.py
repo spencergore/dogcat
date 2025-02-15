@@ -32,7 +32,7 @@ model = load_model()
 IMG_SIZE = (150, 150)
 
 # Title of the app
-st.title("🐶🐱 Cat vs. Dog Classifier")
+st.title("🐶🐱 Spencer's Cat vs. Dog Classifier")
 
 st.write("Upload an image of a **cat or dog**, and this AI model will predict what it is!")
 
@@ -42,7 +42,7 @@ uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg
 if uploaded_file is not None:
     # Convert the file to an OpenCV image
     image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", use_column_width=True)
+    st.image(image, caption="Uploaded Image", use_container_width=True)
 
     # Preprocess the image
     img = np.array(image)
